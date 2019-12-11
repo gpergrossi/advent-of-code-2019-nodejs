@@ -1,0 +1,6 @@
+PS C:\Users\gperg\Desktop\NodeJS\2019\Day 4> node .\Script.js
+1767
+1192
+true
+false
+true

@@ -1,0 +1,3 @@
+PS C:\Users\gperg\Desktop\NodeJS\2019\Day 1> node .\Script.js
+Answer 1: 3328306
+Answer 2: 4989588

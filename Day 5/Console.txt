@@ -1,0 +1,19 @@
+PS C:\Users\gperg\Desktop\NodeJS\2019\Day 5> node .\Script.js
+Program requests an integer:
+> 1
+Program emits 0
+Program emits 0
+Program emits 0
+Program emits 0
+Program emits 0
+Program emits 0
+Program emits 0
+Program emits 0
+Program emits 0
+Program emits 9431221
+Program halted
+PS C:\Users\gperg\Desktop\NodeJS\2019\Day 5> node .\Script.js
+Program requests an integer:
+> 5
+Program emits 1409363
+Program halted

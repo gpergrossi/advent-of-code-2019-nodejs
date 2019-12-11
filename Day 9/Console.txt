@@ -1,0 +1,10 @@
+PS C:\Users\gperg\Desktop\NodeJS\2019\Day 9> node .\Script.js
+[CPU] Program requests an integer:
+> 1
+[CPU] Program emits 2171728567
+program terminated.
+PS C:\Users\gperg\Desktop\NodeJS\2019\Day 9> node .\Script.js
+[CPU] Program requests an integer:
+> 2
+[CPU] Program emits 49815
+program terminated.
