@@ -1,0 +1,51 @@
+PS C:\Users\gperg\Desktop\NodeJS\2019\Day 12> node .\Script.js
+Moon <x=-5, y=6, z=-11>
+Moon <x=-8, y=-4, z=-2>
+Moon <x=1, y=16, z=4>
+Moon <x=11, y=11, z=-4>
+
+Simulated 1000 iterations in 6ms
+[ { x: 47,
+    y: -32,
+    z: 80,
+    dx: -5,
+    dy: -16,
+    dz: -2,
+    potentialEnergy: 159,
+    kineticEnergy: 23,
+    energy: 3657 },
+  { x: 58,
+    y: -35,
+    z: -49,
+    dx: -2,
+    dy: 7,
+    dz: 2,
+    potentialEnergy: 142,
+    kineticEnergy: 11,
+    energy: 1562 },
+  { x: 17,
+    y: 91,
+    z: 2,
+    dx: -9,
+    dy: 0,
+    dz: 10,
+    potentialEnergy: 110,
+    kineticEnergy: 19,
+    energy: 2090 },
+  { x: -123,
+    y: 5,
+    z: -46,
+    dx: 16,
+    dy: 9,
+    dz: -10,
+    potentialEnergy: 174,
+    kineticEnergy: 35,
+    energy: 6090 } ]
+
+ANSWER 1 = 13399
+
+Found a cycle {from: 0, to: 286332, length: 286332} in: 401ms
+Found a cycle {from: 0, to: 161428, length: 161428} in: 176ms
+Found a cycle {from: 0, to: 108344, length: 108344} in: 122ms
+
+ANSWER 2 = 312992287193064

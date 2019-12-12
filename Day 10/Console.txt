@@ -1,0 +1,303 @@
+PS C:\Users\gperg\Desktop\NodeJS\2019\Day 10> node .\Script.js                                                            0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0   O     O O   O O O       O O O O O O O
+1 O O   O O . O . . . O . O . .     . O
+2   O   O O O O O O   O . O O O O O O   O
+3   . O .   . . . O . O .   . O . .   O
+4 O O . O O   O O   O   . O   O O O   O O
+5     O . O O O     .   . O O O . O . O .
+6 O O O O . O O O O O O . O O O O O O . O
+7 O   . . O .         O . O   O   O   O .
+8 O .   O O O . O O O O . O O O O . O O O
+9 O . O . O   O .   . O .     O . O O
+0     . O O O O O     O .   O . O O . O O
+1 O O O O   . O   O . O .       . O     .
+2   O O O O O     O   O O O O O O   O O O
+3 . .       .   . . . O @ O . . . .
+4 O   O O O O O O O O O O   O O O O O O O
+5   . O . O   O   O . O   O O O   O   O .
+6         O .   O .   O . O     O O . O O
+7   .   .   . O . O . O . O . O .   . O .
+8 O   O   O   . O O O O   O O O O   O O O
+9 O O .   O .   O . . O   O .   O     O .
+
+ANSWER 1 = 210 asteroids visible from 11,13
+
+299 total asteroids
+Vaporizing 210 asteroids... (89 remaining)
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0   X     X X   X X X       X X X X X X X
+1 X X   X X . X O . O X . X O O     . X
+2   X   X X X X X X   X . X X X X X X   X
+3   . X O   O . O X O X .   O X O .   X
+4 X X . X X   X X   X   . X   X X X   X X
+5     X . X X X     O   . X X X O X O X .
+6 X X X X . X X X X X X . X X X X X X . X
+7 X   O O X .         X . X   X   X   X O
+8 X .   X X X . X X X X . X X X X . X X X
+9 X O X O X   X .   O X .     X . X X
+0     . X X X X X     X .   X O X X . X X
+1 X X X X   O X   X O X O       O X     O
+2   X X X X X     X   X X X X X X   X X X
+3 . .       .   . . O X @ X O . . .
+4 X   X X X X X X X X X X   X X X X X X X
+5   O X O X   X   X O X   X X X   X   X O
+6         X O   X .   X O X     X X O X X
+7   O   .   O X . X O X . X O X O   O X .
+8 X   X   X   . X X X X   X X X X   X X X
+9 X X .   X .   X . O X   X O   X     X O
+
+Vaporizing 43 asteroids... (46 remaining)
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0
+1           .   X O X   .   X X     .
+2                       .
+3   .   X   X O X   X   .   X   X O
+4     .                 .
+5       .           X   .       X   X   .
+6         .             .             .
+7     X X   .           .               X
+8   O         .         .         .
+9   X   X       O   X   .       O
+0     O                 O     X     O
+1           X       X   X       X       X
+2
+3 . .       .   . O X   @   X O . .
+4
+5   X   X           X                   X
+6           X     O     X           X
+7   X   O   X   .   X   O   X   X   X   O
+8             .
+9     O     .     O X       X           X
+
+Vaporizing 17 asteroids... (29 remaining)
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0
+1           O     X     .           O
+2                       .
+3   .         X         .         X
+4     .                 .
+5       .               .               .
+6         .             .             .
+7           .           .
+8   X         O         .         O
+9               X       O       X
+0     X                 X           X
+1
+2
+3 . .       .   O X     @     X O .
+4
+5
+6                 X
+7       X       O       X               X
+8             .
+9     X     .     X
+
+Vaporizing 8 asteroids... (21 remaining)
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0
+1           X           .           X
+2                       .
+3   .                   .
+4     .                 .
+5       .               .               .
+6         .             .             O
+7           O           .
+8             X         O         X
+9                       X
+0
+1
+2
+3 . .       O   X       @       X O
+4
+5
+6
+7               X
+8             O
+9           .
+
+Vaporizing 6 asteroids... (15 remaining)
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0
+1                       .
+2                       .
+3   .                   .
+4     .                 .
+5       .               .               O
+6         O             .             X
+7           X           O
+8                       X
+9
+0
+1
+2
+3 . O       X           @         X
+4
+5
+6
+7
+8             X
+9           O
+
+Vaporizing 5 asteroids... (10 remaining)
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0
+1                       .
+2                       .
+3   .                   .
+4     .                 .
+5       O               .               X
+6         X             O
+7                       X
+8
+9
+0
+1
+2
+3 O X                   @
+4
+5
+6
+7
+8
+9           X
+
+Vaporizing 3 asteroids... (7 remaining)
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0
+1                       .
+2                       .
+3   .                   .
+4     O                 .
+5       X               O
+6                       X
+7
+8
+9
+0
+1
+2
+3 X                     @
+4
+5
+6
+7
+8
+9
+
+Vaporizing 2 asteroids... (5 remaining)
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0
+1                       .
+2                       .
+3   O                   .
+4     X                 O
+5                       X
+6
+7
+8
+9
+0
+1
+2
+3                       @
+4
+5
+6
+7
+8
+9
+
+Vaporizing 2 asteroids... (3 remaining)
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0
+1                       .
+2                       .
+3   X                   O
+4                       X
+5
+6
+7
+8
+9
+0
+1
+2
+3                       @
+4
+5
+6
+7
+8
+9
+
+Vaporizing 1 asteroids... (2 remaining)
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0
+1                       .
+2                       O
+3                       X
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3                       @
+4
+5
+6
+7
+8
+9
+
+Vaporizing 1 asteroids... (1 remaining)
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0
+1                       O
+2                       X
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3                       @
+4
+5
+6
+7
+8
+9
+
+Vaporizing 1 asteroids... (0 remaining)
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0
+1                       X
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3                       @
+4
+5
+6
+7
+8
+9
+
+
+ANSWER 2 = 802

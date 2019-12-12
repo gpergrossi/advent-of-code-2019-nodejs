@@ -54,14 +54,22 @@ function main() {
       
       var sightLines = resolveSightLines(asteroidMap, bestPos.x, bestPos.y);
       render(asteroidMap, sightLines);
-            
-      console.log("ANSWER 1 = " + mostSeen + " (from " + bestPos.x + "," + bestPos.y + ")");
+      
+      console.log();
+      console.log("ANSWER 1 = " + mostSeen + " asteroids visible from " + bestPos.x + "," + bestPos.y);
+      console.log();
       
       var vaporizeCount = 0;
+      var answer2 = 0;
       vaporizeAll(asteroidMap, bestPos.x, bestPos.y, (asteroid) => {
          vaporizeCount++;
-         console.log(vaporizeCount + ": (" + asteroid.x + ", " + asteroid.y + ")");
+         if (vaporizeCount == 200) {
+            answer2 = (asteroid.x * 100 + asteroid.y);
+         }
       });
+      console.log();
+      console.log("ANSWER 2 = " + answer2);
+      console.log();
       
    });
 }
@@ -147,17 +155,26 @@ function render(map, sightLines) {
    var width = map[0].length;
    var count = 0;
    
-   for (let row = 0; row < height; row++) {
-      var str = "";
+   {
+      var str = "  ";
       for (let col = 0; col < width; col++) {
-         var chr = ".";
+         str += (col % 10) + " ";
+      }
+      console.log(str);
+   }
+   
+   for (let row = 0; row < height; row++) {
+      var str = (row % 10) + " ";
+      for (let col = 0; col < width; col++) {
+         var chr = " ";
          
          var sight = sightLines[row][col];
          if (sight.viewedFrom.x == col && sight.viewedFrom.y == row) chr = "@";
-         else if (sight.visible == false) chr = "+";
-         else if (map[row][col] === 1) chr = "X";
-         else if (map[row][col] !== 0) chr = map[row][col];
-         str += chr;
+         else if (sight.visible == false && map[row][col] == 1) chr = ".";
+         else if (sight.visible == false) chr = " ";
+         else if (map[row][col] === 1) chr = "O"
+         else if (map[row][col] !== 0) chr = map[row][col] + "";
+         str += chr + " ";
       }
       console.log(str);
    }
@@ -181,57 +198,56 @@ function vaporizeAll(map, x, y, vaporizeCallback) {
    
    var laserPos = {x: x, y: y}
    
-   console.log("Vaporizing " + totalAsteroids + " asteroids...");
+   console.log(totalAsteroids + " total asteroids");
    var asteroidsVaporized = 0;
-   var lastVaporized = null;
    while (asteroidsVaporized < totalAsteroids) {
       var sightLines = resolveSightLines(mapCopy, x, y);
-      var target = findNextTarget(mapCopy, sightLines, laserPos, lastVaporized);
       
-      vaporizeCallback(target);
-      lastVaporized = target;
-            
+      var toBeVaporized = [];
+      
+      // Sweep
+      var reach = Math.max(x, width-x-1, y, height-y-1);
+      for (let coord of radialIteratorAsteroids(reach)) {
+         if (coord.x == 0 && coord.y == 0) continue;
+         
+         let col = x + coord.x;
+         let row = y + coord.y;
+         if (col < 0 || row < 0 || col >= width || row >= height) continue;
+         
+         if (mapCopy[row][col] == 1 && sightLines[row][col].visible) {
+            // Mark this asteroid
+            toBeVaporized.push({x: col, y: row});
+         }
+      }
+      
+      asteroidsVaporized += toBeVaporized.length;
+      console.log("Vaporizing " + toBeVaporized.length + " asteroids... (" + (totalAsteroids - asteroidsVaporized) + " remaining)");
+      
       // Render vaporization
-      mapCopy[target.y][target.x] = "!";
-      render (mapCopy, sightLines);
-      console.log("--------------------------");
-      mapCopy[target.y][target.x] = 0;
+      for (let asteroid of toBeVaporized) {
+         vaporizeCallback(asteroid);
+         mapCopy[asteroid.y][asteroid.x] = 0;
+      }
+      sightLines = resolveSightLines(mapCopy, x, y);
+      for (let asteroid of toBeVaporized) {
+         mapCopy[asteroid.y][asteroid.x] = "X";
+      }
+      render(mapCopy, sightLines);
+      console.log();
       
-      asteroidsVaporized++;
+      // Remove asteroids from map
+      for (let asteroid of toBeVaporized) {
+         mapCopy[asteroid.y][asteroid.x] = 0;
+      }
+      
    }
 }
 
-//function findNextTarget(map, sightLines, laserPos, lastTarget) {
-//   var height = map.length;
-//   var width = map[0].length;
-//   
-//   var nextTarget = null;
-//   
-//   for (let row = 0; row < height; row++) {
-//      for (let col = 0; col < width; col++) {
-//         var sight = sightLines[row][col];
-//         
-//         if (row == y && col == x) continue;
-//         if (map[row][col] == 0) continue;
-//         if (!sight.visible) continue;
-//         
-//         var dx = x - col;
-//         var dy = y - row; // invert Y to match with cartesian coords
-//         
-//         if (compare(laserDX, laserDY, dx, dy) < 0) {
-//            if (compare(dx, dy, bestDX, bestDY) <= 0) {
-//            }
-//         }
-//         
-//         if (da < bestAngleDelta) {
-//            bestAngleDelta = da;
-//            nextAsteroid = {x: col, y: row};
-//         }
-//      }
-//   }
-//   
-//   return nextTarget;
-//}
+function *radialIteratorAsteroids(reach) {
+   for (let result of radialIterator(reach)) {
+      yield {x: result.y, y: -result.x};
+   }
+}
 
 function *radialIterator(reach) {
    // Return center
@@ -244,16 +260,19 @@ function *radialIterator(reach) {
    
    // Second quadrant
    for (let result of radialIteratorFirstQuadrant(reach)) {
+      // Rotate 90 degress counter-clockwise
       yield {x: -result.y, y: result.x};
    }
    
    // Third quadrant
    for (let result of radialIteratorFirstQuadrant(reach)) {
+      // Rotate 180 degress counter-clockwise
       yield {x: -result.x, y: -result.y};
    }
    
    // Fourth quadrant
    for (let result of radialIteratorFirstQuadrant(reach)) {
+      // Rotate 270 degress counter-clockwise
       yield {x: result.y, y: -result.x};
    }
 }
